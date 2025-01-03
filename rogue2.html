@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jumpscare Button</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: black;
+      font-family: Arial, sans-serif;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 20px;
+      font-weight: bold;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    #jumpscare {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #jumpscare video {
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    #close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 10px;
+      font-size: 18px;
+      background-color: white;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button id="scareButton">Klik Aku Jika Berani</button>
+
+  <div id="jumpscare">
+    <button id="close-btn">Tutup</button>
+    <video id="scareVideo" autoplay muted>
+      <source src="/rusdi kewer kewer woilah.mp4" type="video/mp4">
+      Browser Anda tidak mendukung video.
+    </video>
+  </div>
+
+  <script>
+    const scareButton = document.getElementById('scareButton');
+    const jumpscare = document.getElementById('jumpscare');
+    const scareVideo = document.getElementById('scareVideo');
+    const closeBtn = document.getElementById('close-btn');
+
+    scareButton.addEventListener('click', () => {
+      jumpscare.style.display = 'flex';
+      scareVideo.play();
+    });
+
+    closeBtn.addEventListener('click', () => {
+      jumpscare.style.display = 'none';
+      scareVideo.pause();
+      scareVideo.currentTime = 0; // Reset video ke awal
+    });
+  </script>
+</body>
+</html>
